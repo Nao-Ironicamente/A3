@@ -35,6 +35,8 @@ O visual do software também não é obrigatório, mas pode gerar pontos adicion
 <h3> Log </h3>
 
 - 07/05 : 
-    * Divisão e distribuição de tarefas, Criação do Github e inserção do código base, Fundação do Banco de dados feita, Classe `Modelo` feita.
+    * Divisão e distribuição de tarefas,
+    * Criação do Github e inserção do código base, 
+    * Fundação do Banco de dados feita, Classe `Modelo` feita.
 - 14/05 :
 - 21/05 : 
