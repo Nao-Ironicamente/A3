@@ -18,6 +18,9 @@
 <a href="https://github.com/RafaArauj">
   <img src="https://github.com/RafaArauj.png" style="width: 70px; border-radius: 50%;">
 </a>
+<a href="https://github.com/AliceSilveiraa">
+  <img src="https://github.com/AliceSilveiraa.png" style="width: 70px; border-radius: 50%;">
+</a>
 
 <h2> Descrição da atividade </h2> 
 
