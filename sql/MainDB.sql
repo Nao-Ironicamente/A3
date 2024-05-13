@@ -1,4 +1,13 @@
-#Drop database if exists A3;
+
+#   Esse Script foi feito para gerar o banco de dados usado na A3 do grupo Não Ironicamente
+#	  Para mais informações cheque o Github do projeto https://github.com/Nao-Ironicamente/A3
+#
+#	  Esse Script também depende de você criar o usuário pub manualmente com os seguintes comandos:
+#	  IMPORTANTE! CADA COMANDO DE SER RODADO INDIVIDUALMENTE!
+#
+#	  Create User 'pub' IDENTIFIED BY 'pub';
+#	  GRANT ALL PRIVILEGES ON A3.* TO 'pub';
+
 
 CREATE DATABASE A3;
 
@@ -24,7 +33,7 @@ CREATE TABLE Aluno (
 );
 
 
-#compatibilidade
+#Compatibilidade
 CREATE TABLE tb_alunos (
   id INT NOT NULL,
   nome varchar(80),
