@@ -22,12 +22,11 @@ CREATE TABLE Pessoa (
   PRIMARY KEY (id)
 );
 
-CREATE TABLE Aluno (
+CREATE TABLE Funcionario (
   id INT NOT NULL,
   Pessoa_id INT,
-  curso VARCHAR(80),
-  fase VARCHAR(20),
-  matricula VARCHAR(50),
+  Cargo VARCHAR(80),
+  Salario DECIMAL(20,3),
   PRIMARY KEY (id),
   foreign key (Pessoa_id) references Pessoa (id)
 );
