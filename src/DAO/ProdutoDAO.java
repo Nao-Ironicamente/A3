@@ -70,4 +70,17 @@ public class ProdutoDAO extends ConnectionDAO {
         }
 
     }
+
+    // Deletar um Produto
+    public boolean DeleteProdutoBD(int id) {
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            stmt.executeUpdate("DELETE FROM Produto WHERE id = " + id);
+            stmt.close();            
+            
+        } catch (SQLException erro) {
+        }
+        
+        return true;
+    }
 }
