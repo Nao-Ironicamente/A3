@@ -83,4 +83,31 @@ public class ProdutoDAO extends ConnectionDAO {
         
         return true;
     }
+
+    // Atualizar as informações em um Produto
+    public boolean UpdateProdutoBD(Produto objeto) {
+
+        String sql = "UPDATE Produto set nome = ? ,descricao = ? ,estoque = ? ,preço = ?, cadastro = ? WHERE id = ?";
+
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+
+            stmt.setString(1, objeto.getProduto());
+            stmt.setString(2, objeto.getDescricao_produto());
+            stmt.setInt(3, objeto.getQuantidade_estoque());
+            stmt.setDouble(4, objeto.getPreço());
+            stmt.setDate(5, java.sql.Date.valueOf(objeto.getData_cadastro()));
+            stmt.setInt(6, objeto.getId_produto());
+
+            stmt.execute();
+            stmt.close();
+
+            return true;
+
+        } catch (SQLException erro) {
+            throw new RuntimeException(erro);
+        }
+
+    }
+
 }
