@@ -1,6 +1,5 @@
 package DAO;
 
-import Model.Aluno;
 import Model.Produto;
 import java.util.*;
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class ProdutoDAO extends ConnectionDAO {
     public ProdutoDAO(){
     }
 
-        public ArrayList getMinhaLista() {
+    public ArrayList getMinhaLista() {
         
         MinhaLista.clear(); // Limpa nosso ArrayList
 
@@ -47,5 +46,28 @@ public class ProdutoDAO extends ConnectionDAO {
         return MinhaLista;
     }
 
+    // Cadastra novo aluno
+    public boolean InsertProdutoBD(Produto objeto) {
+        String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preço,cadastro) VALUES(?,?,?,?,?,?)";
 
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+
+            stmt.setInt(1, objeto.getId_produto());
+            stmt.setString(2, objeto.getProduto());
+            stmt.setString(3, objeto.getDescricao_produto());
+            stmt.setInt(4, objeto.getQuantidade_estoque());
+            stmt.setDouble(5, objeto.getPreço());
+            stmt.setDate(6, java.sql.Date.valueOf(objeto.getData_cadastro()));
+
+            stmt.execute();
+            stmt.close();
+
+            return true;
+
+        } catch (SQLException erro) {
+            throw new RuntimeException(erro);
+        }
+
+    }
 }
