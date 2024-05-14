@@ -3,12 +3,13 @@ package Model;
 import java.time.LocalDate;
 
 public class Produto {
+    
     private int id_produto;
-        private String produto;
-        private String descricao_produto;
-        private int quantidade_estoque;
-        private double preço;
-        private LocalDate data_cadastro;
+    private String produto;
+    private String descricao_produto;
+    private int quantidade_estoque;
+    private double preço;
+    private LocalDate data_cadastro;
 
     public Produto() {
     }
@@ -70,26 +71,22 @@ public class Produto {
         this.data_cadastro = data_cadastro;
     }
         
-          //método para verificar o estoque do protudo
-           public void verificarEstoque () {
-         if (quantidade_estoque == 0){
-         System.out.println("O produto está sem estoque no momento");}
-         else {
-         System.out.println ("O estoque do produto é: " + quantidade_estoque);}}
+    //método para verificar o estoque do produto
+    public void verificarEstoque () {
+        if (quantidade_estoque == 0){
+            System.out.println("O produto está sem estoque no momento");}
+        else {
+            System.out.println ("O estoque do produto é: " + quantidade_estoque);
+        }
+    }
          
-         //método para imprimir informações detalhadas do produto:
-           public void imprimirInformacoesDetalhadas() {
+    //método para imprimir informações detalhadas do produto:
+    public void imprimirInformacoesDetalhadas() {
         System.out.println("ID do Produto: " + id_produto);
         System.out.println("Nome do Produto: " + produto);
         System.out.println("Descrição do Produto: " + descricao_produto);
         System.out.println("Quantidade em Estoque: " + quantidade_estoque);
         System.out.println("Preço: " + preço);
-        System.out.println("Data de Cadastro: " + data_cadastro);
-       
-
-   
-       
-        
-
-        
-    }}
+        System.out.println("Data de Cadastro: " + data_cadastro);  
+    }
+}
