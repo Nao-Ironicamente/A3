@@ -46,7 +46,7 @@ public class ProdutoDAO extends ConnectionDAO {
         return MinhaLista;
     }
 
-    // Cadastra novo aluno
+    // Cadastra novo Produto
     public boolean InsertProdutoBD(Produto objeto) {
         String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preço,cadastro) VALUES(?,?,?,?,?,?)";
 
