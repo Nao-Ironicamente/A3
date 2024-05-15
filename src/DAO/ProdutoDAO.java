@@ -110,4 +110,27 @@ public class ProdutoDAO extends ConnectionDAO {
 
     }
 
+    // Carear um Produto especifico
+    public Produto CarregarProduto(int id) {
+        
+        Produto objeto = new Produto();
+        objeto.setId_produto(id);
+        
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("SELECT * FROM Produto WHERE id = " + id);
+            res.next();
+
+            objeto.setProduto(res.getString("nome"));
+            objeto.setDescricao_produto(res.getString("descricao"));
+            objeto.setQuantidade_estoque(res.getInt("estoque"));
+            objeto.setPreço(res.getDouble("preço"));
+            objeto.setData_cadastro(res.getDate("cadastro").toLocalDate());
+
+            stmt.close();            
+            
+        } catch (SQLException erro) {
+        }
+        return objeto;
+    }
 }
