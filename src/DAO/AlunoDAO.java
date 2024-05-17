@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AlunoDAO {
+public class AlunoDAO extends ConnectionDAO {
 
     public static ArrayList<Aluno> MinhaLista = new ArrayList<Aluno>();
 
@@ -31,44 +31,6 @@ public class AlunoDAO {
         }
 
         return maiorID;
-    }
-
-    public Connection getConexao() {
-
-        Connection connection = null;  //instancia da conexão
-
-        try {
-
-            // Carregamento do JDBC Driver
-            String driver = "com.mysql.cj.jdbc.Driver";
-            Class.forName(driver);
-
-            // Configurar a conexão
-            String server = "localhost"; //caminho do MySQL
-            String database = "A3";
-            String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
-            String user = "root";
-            String password = "admin";
-
-            connection = DriverManager.getConnection(url, user, password);
-
-            // Testando..
-            if (connection != null) {
-                System.out.println("Status: Conectado!");
-            } else {
-                System.out.println("Status: NãO CONECTADO!");
-            }
-
-            return connection;
-
-        } catch (ClassNotFoundException e) {  //Driver não encontrado
-            System.out.println("O driver nao foi encontrado. " + e.getMessage() );
-            return null;
-
-        } catch (SQLException e) {
-            System.out.println("Nao foi possivel conectar...");
-            return null;
-        }
     }
 
     // Retorna a Lista de Alunos(objetos)
