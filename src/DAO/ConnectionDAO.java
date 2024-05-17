@@ -20,8 +20,8 @@ public class ConnectionDAO {
             String server = "localhost"; //caminho do MySQL
             String database = "A3";
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
-            String user = "root";
-            String password = "admin";
+            String user = "pub";
+            String password = "pub";
 
             connection = DriverManager.getConnection(url, user, password);
 
