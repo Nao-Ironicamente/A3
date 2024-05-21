@@ -45,4 +45,6 @@ O visual do software também não é obrigatório, mas pode gerar pontos adicion
     * Criação do Github e inserção do código base, 
     * Fundação do Banco de dados feita, Classe `Modelo` feita.
 - 14/05 :
+  * Trello,
+  * Diagrama do programa.
 - 21/05 : 
