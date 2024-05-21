@@ -9,6 +9,7 @@ public class Aluno extends Pessoa {
     // Atributos
     private String curso;
     private int fase;
+    private int idade;
     private final AlunoDAO dao; 
 
     // Método Construtor de Objeto Vazio
@@ -24,8 +25,9 @@ public class Aluno extends Pessoa {
     }
 
     // Método Construtor usando também o construtor da SUPERCLASSE
-    public Aluno(String curso, int fase, int id, String nome, int idade) {
-        super(id, nome, idade);
+    public Aluno(String curso, int fase, int id, int idade ,String nome, String email) {
+        super(id, nome, email);
+        this.idade = idade;
         this.curso = curso;
         this.fase = fase;
         this.dao = new AlunoDAO(); // inicializado não importa em qual construtor
@@ -73,9 +75,9 @@ public class Aluno extends Pessoa {
 
     // Cadastra novo aluno
 //    public boolean InsertAlunoBD(String curso, int fase, String nome, int idade) {
-    public boolean InsertAlunoBD(String curso, int fase, String nome, int idade) throws SQLException {
+    public boolean InsertAlunoBD(String curso, int fase, int idade, String nome) throws SQLException {
         int id = this.maiorID() + 1;
-        Aluno objeto = new Aluno(curso, fase, id, nome, idade);
+        Aluno objeto = new Aluno(curso, fase, id, idade, nome, null);
 //        AlunoDAO.MinhaLista.add(objeto);
         dao.InsertAlunoBD(objeto);
         return true;
@@ -92,7 +94,7 @@ public class Aluno extends Pessoa {
 
     // Edita um aluno especifico pelo seu campo ID
     public boolean UpdateAlunoBD(String curso, int fase, int id, String nome, int idade) {
-        Aluno objeto = new Aluno(curso, fase, id, nome, idade);
+        Aluno objeto = new Aluno(curso, fase, id, idade, nome, null);
 //        int indice = this.procuraIndice(id);
 //        AlunoDAO.MinhaLista.set(indice, objeto);
         dao.UpdateAlunoBD(objeto);
@@ -124,4 +126,12 @@ public class Aluno extends Pessoa {
 //        return AlunoDAO.maiorID();
         return dao.maiorID();
     }   
+
+    public int getIdade(){
+        return this.idade;
+    }
+
+    public void setIdade(int Idade){
+        this.idade = Idade;
+    }
 }

@@ -49,7 +49,7 @@ public class AlunoDAO extends ConnectionDAO {
                 String nome = res.getString("nome");
                 int idade = res.getInt("idade");
 
-                Aluno objeto = new Aluno(curso, fase, id, nome, idade);
+                Aluno objeto = new Aluno(curso, fase, id, idade, nome, null);
 
                 MinhaLista.add(objeto);
             }
