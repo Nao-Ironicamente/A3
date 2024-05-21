@@ -1,34 +1,37 @@
 package Model;
 
 import java.time.LocalDate;
+import java.awt.Image;
 
 public class Produto {
     
-    private int id_produto;
+    private int id;
     private String produto;
-    private String descricao_produto;
-    private int quantidade_estoque;
-    private double preço;
-    private LocalDate data_cadastro;
+    private String descricao;
+    private int quantidadeEstoque;
+    private double preco;
+    private LocalDate dataCadastro;
+    private Image imagem;
 
     public Produto() {
     }
 
-    public Produto(int id_produto, String produto, String descricao_produto, int quantidade_estoque, double preço, LocalDate data_cadastro) {
-        this.id_produto = id_produto;
+    public Produto(int id, String produto, String descricao, int quantidadeEstoque, double preco, LocalDate dataCadastro, Image imagem) {
+        this.id = id;
         this.produto = produto;
-        this.descricao_produto = descricao_produto;
-        this.quantidade_estoque = quantidade_estoque;
-        this.preço = preço;
-        this.data_cadastro = data_cadastro;
+        this.descricao = descricao;
+        this.quantidadeEstoque = quantidadeEstoque;
+        this.preco = preco;
+        this.dataCadastro = dataCadastro;
+        this.imagem = imagem;
     }
 
-    public int getId_produto() {
-        return id_produto;
+    public int getid() {
+        return id;
     }
 
-    public void setId_produto(int id_produto) {
-        this.id_produto = id_produto;
+    public void setid(int id) {
+        this.id = id;
     }
 
     public String getProduto() {
@@ -39,54 +42,63 @@ public class Produto {
         this.produto = produto;
     }
 
-    public String getDescricao_produto() {
-        return descricao_produto;
+    public String getdescricao() {
+        return descricao;
     }
 
-    public void setDescricao_produto(String descricao_produto) {
-        this.descricao_produto = descricao_produto;
+    public void setdescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public int getQuantidade_estoque() {
-        return quantidade_estoque;
+    public int getquantidadeEstoque() {
+        return quantidadeEstoque;
     }
 
-    public void setQuantidade_estoque(int quantidade_estoque) {
-        this.quantidade_estoque = quantidade_estoque;
+    public void setquantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public double getPreço() {
-        return preço;
+    public double getpreco() {
+        return preco;
     }
 
-    public void setPreço(double preço) {
-        this.preço = preço;
+    public void setpreco(double preco) {
+        this.preco = preco;
     }
 
-    public LocalDate getData_cadastro() {
-        return data_cadastro;
+    public LocalDate getdataCadastro() {
+        return dataCadastro;
     }
 
-    public void setData_cadastro(LocalDate data_cadastro) {
-        this.data_cadastro = data_cadastro;
+    public void setdataCadastro(LocalDate dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public Image getImagem(){
+        return this.imagem;
+    }
+
+    public void setImagem(Image imagem){
+        this.imagem = imagem;
     }
         
     //método para verificar o estoque do produto
     public void verificarEstoque () {
-        if (quantidade_estoque == 0){
+        if (quantidadeEstoque == 0){
             System.out.println("O produto está sem estoque no momento");}
         else {
-            System.out.println ("O estoque do produto é: " + quantidade_estoque);
+            System.out.println ("O estoque do produto é: " + quantidadeEstoque);
         }
     }
          
     //método para imprimir informações detalhadas do produto:
     public void imprimirInformacoesDetalhadas() {
-        System.out.println("ID do Produto: " + id_produto);
+        System.out.println("ID do Produto: " + id);
         System.out.println("Nome do Produto: " + produto);
-        System.out.println("Descrição do Produto: " + descricao_produto);
-        System.out.println("Quantidade em Estoque: " + quantidade_estoque);
-        System.out.println("Preço: " + preço);
-        System.out.println("Data de Cadastro: " + data_cadastro);  
+        System.out.println("Descrição do Produto: " + descricao);
+        System.out.println("Quantidade em Estoque: " + quantidadeEstoque);
+        System.out.println("preco: " + preco);
+        System.out.println("Data de Cadastro: " + dataCadastro);  
+        System.out.println("Imagem Inclusa: "+ String.valueOf(imagem != null));
     }
 }
