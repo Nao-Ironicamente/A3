@@ -37,12 +37,13 @@ public class ProdutoDAO extends ConnectionDAO {
                 int quantidadeEstoque = res.getInt("estoque");
                 Double preco = res.getDouble("preco");
                 LocalDate dataCadastro = res.getDate("cadastro").toLocalDate();
-
+                Double peso = res.getDouble("peso");
+                
                 byte[] imageByte = null;
                 imageByte = res.getBytes("imagem");
                 Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
 
-                Produto objeto = new Produto(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, imagem);
+                Produto objeto = new Produto(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, peso, imagem);
 
                 MinhaLista.add(objeto);
             }
@@ -57,7 +58,7 @@ public class ProdutoDAO extends ConnectionDAO {
 
     // Cadastra novo Produto
     public boolean InsertProdutoBD(Produto objeto) {
-        String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preco,cadastro) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preco,cadastro,peso,imagem) VALUES(?,?,?,?,?,?,?,?)";
         
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try{
@@ -76,7 +77,8 @@ public class ProdutoDAO extends ConnectionDAO {
             stmt.setInt(4, objeto.getquantidadeEstoque());
             stmt.setDouble(5, objeto.getpreco());
             stmt.setDate(6, java.sql.Date.valueOf(objeto.getdataCadastro()));
-            stmt.setBytes(7, imagemByte);
+            stmt.setDouble(7, objeto.getPeso());
+            stmt.setBytes(8, imagemByte);
 
             stmt.execute();
             stmt.close();
@@ -105,7 +107,7 @@ public class ProdutoDAO extends ConnectionDAO {
     // Atualizar as informações em um Produto
     public boolean UpdateProdutoBD(Produto objeto) {
 
-        String sql = "UPDATE Produto set nome = ? ,descricao = ? ,estoque = ? ,preco = ?, cadastro = ? WHERE id = ?";
+        String sql = "UPDATE Produto set nome = ? ,descricao = ? ,estoque = ? ,preco = ?, cadastro = ?, peso = ?, imagem = ? WHERE id = ?";
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try{
@@ -123,8 +125,9 @@ public class ProdutoDAO extends ConnectionDAO {
             stmt.setInt(3, objeto.getquantidadeEstoque());
             stmt.setDouble(4, objeto.getpreco());
             stmt.setDate(5, java.sql.Date.valueOf(objeto.getdataCadastro()));
-            stmt.setInt(6, objeto.getid());
+            stmt.setDouble(6, objeto.getPeso());
             stmt.setBytes(7, imagemByte);
+            stmt.setInt(8, objeto.getid());
 
             stmt.execute();
             stmt.close();
@@ -137,7 +140,7 @@ public class ProdutoDAO extends ConnectionDAO {
 
     }
 
-    // Carear um Produto especifico
+    // Carregar um Produto especifico
     public Produto CarregarProduto(int id) {
         
         Produto objeto = new Produto();
@@ -153,7 +156,8 @@ public class ProdutoDAO extends ConnectionDAO {
             objeto.setquantidadeEstoque(res.getInt("estoque"));
             objeto.setpreco(res.getDouble("preco"));
             objeto.setdataCadastro(res.getDate("cadastro").toLocalDate());
-
+            objeto.setPeso(res.getDouble("peso"));
+            
             byte[] imageByte = null;
             imageByte = res.getBytes("imagem");
             Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
