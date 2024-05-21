@@ -50,5 +50,6 @@ CREATE TABLE Produto (
   estoque INT,
   preço DECIMAL(10,3),
   cadastro DATE,
+  imagem LONGBLOB,
   PRIMARY KEY (id)
 );
