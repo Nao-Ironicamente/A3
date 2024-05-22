@@ -170,4 +170,40 @@ public class ProdutoDAO extends ConnectionDAO {
         }
         return objeto;
     }
+
+    //Pesquisar por Produto
+    public ArrayList PesquisarProduto(String termoDePesquisa){
+
+        MinhaLista.clear(); // Limpa nosso ArrayList
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("select * from `Produto` where `nome` rlike '"+termoDePesquisa+"' union" + // Executar a pesquisa no BD
+                                              "select * from `Produto` where `descricao` rlike '"+termoDePesquisa+"';");
+            while (res.next()) {
+
+                int id = res.getInt("id");
+                String nome = res.getString("nome");
+                String descricao = res.getString("descricao");
+                int quantidadeEstoque = res.getInt("estoque");
+                Double preco = res.getDouble("preco");
+                LocalDate dataCadastro = res.getDate("cadastro").toLocalDate();
+                Double peso = res.getDouble("peso");
+                
+                byte[] imageByte = null;
+                imageByte = res.getBytes("imagem");
+                Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
+
+                Produto objeto = new Produto(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, peso, imagem);
+
+                MinhaLista.add(objeto);
+            }
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+        }
+
+        return MinhaLista;
+    }
 }
