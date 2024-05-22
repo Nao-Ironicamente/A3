@@ -178,7 +178,7 @@ public class ProdutoDAO extends ConnectionDAO {
 
         try {
             Statement stmt = this.getConexao().createStatement();
-            ResultSet res = stmt.executeQuery("select * from `Produto` where `nome` rlike '"+termoDePesquisa+"' union" + // Executar a pesquisa no BD
+            ResultSet res = stmt.executeQuery("select * from `Produto` where `nome` rlike '"+termoDePesquisa+"' union " + // Executar a pesquisa no BD
                                               "select * from `Produto` where `descricao` rlike '"+termoDePesquisa+"';");
             while (res.next()) {
 
