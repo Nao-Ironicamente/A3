@@ -13,22 +13,15 @@ CREATE DATABASE A3;
 
 Use A3;
 
-CREATE TABLE Pessoa (
-  id INT NOT NULL,
-  nome VARCHAR(80) NULL DEFAULT NULL,
-  idade INT NULL DEFAULT NULL,
-  telefone VARCHAR(20) NULL DEFAULT NULL,
-  endereco VARCHAR(250) NULL DEFAULT NULL,
-  PRIMARY KEY (id)
-);
-
 CREATE TABLE Funcionario (
   id INT NOT NULL,
-  Pessoa_id INT,
-  Cargo VARCHAR(80),
-  Salario DECIMAL(20,3),
-  PRIMARY KEY (id),
-  foreign key (Pessoa_id) references Pessoa (id)
+  nome VARCHAR(80),
+  idade INT,
+  cargo VARCHAR(80),
+  salario DECIMAL(20,3),
+  endereco VARCHAR(250),
+  telefone VARCHAR(20),
+  PRIMARY KEY (id)
 );
 
 
