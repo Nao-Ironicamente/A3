@@ -24,6 +24,14 @@ CREATE TABLE Funcionario (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE Cliente(
+  id INT NOT NULL,
+  nome VARCHAR(80),
+  idade INT,
+  endereco VARCHAR(250),
+  telefone VARCHAR(20),
+  PRIMARY KEY (id)
+)
 
 #Compatibilidade
 CREATE TABLE tb_alunos (
