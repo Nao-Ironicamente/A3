@@ -16,11 +16,9 @@ Use A3;
 CREATE TABLE Funcionario (
   id INT NOT NULL,
   nome VARCHAR(80),
-  idade INT,
   cargo VARCHAR(80),
   salario DECIMAL(20,3),
-  endereco VARCHAR(250),
-  telefone VARCHAR(20),
+  email VARCHAR(20),
   PRIMARY KEY (id)
 );
 
