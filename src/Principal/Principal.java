@@ -1,11 +1,11 @@
 package Principal;
 
-import View.TelaPrincipal;
+import View.HomeClient;
 
 public class Principal {
 
     public static void main(String[] args) {
-        TelaPrincipal objetotela = new TelaPrincipal();
+        HomeClient objetotela = new HomeClient();
         objetotela.setVisible(true);
     }
     
