@@ -138,3 +138,11 @@ public class Produto {
         System.out.println("Imagem Inclusa: "+ String.valueOf(imagem != null));
     }
 }
+ public boolean InsertProdutoBD(String nome, String descricao, double peso, int quantidade, double preco) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public Object getMinhaLista() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+}
