@@ -14,8 +14,14 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 
-    public Funcionario(String cargo, double salario, int id, String nome, String email) {
-        super(id, nome, email);
+    public Funcionario(String cargo, double salario, int id, String nome, String email, String senha) {
+        super(id, nome, email, senha);
+        this.cargo = cargo;
+        this.salario = salario;
+    }
+
+    public Funcionario(String cargo, double salario, int id, String nome, String email, String senha, Boolean senhaHash) {
+        super(id, nome, email, senha, senhaHash);
         this.cargo = cargo;
         this.salario = salario;
     }
@@ -51,6 +57,7 @@ public class Funcionario extends Pessoa {
         System.out.println("Email: " + getEmail());
         System.out.println("Cargo: " + cargo);
         System.out.println("Salário: " + salario);
+        System.out.println("Hash da Senha: "+ "*".repeat(getSenha().length()));
     }
 
 }
