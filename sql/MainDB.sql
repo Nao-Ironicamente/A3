@@ -25,8 +25,8 @@ CREATE TABLE Funcionario (
 CREATE TABLE Cliente(
   id INT NOT NULL,
   nome VARCHAR(80),
-  idade INT,
   endereco VARCHAR(250),
+  email VARCHAR(100),
   telefone VARCHAR(20),
   PRIMARY KEY (id)
 )
