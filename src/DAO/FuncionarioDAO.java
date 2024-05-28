@@ -47,8 +47,9 @@ public class FuncionarioDAO extends ConnectionDAO{
                 String cargo = res.getString("cargo");
                 Double salario = res.getDouble("salario");
                 String email = res.getString("email");
+                String senha = res.getString("senha");
 
-                Funcionario objeto = new Funcionario(cargo, salario , id, nome, email);
+                Funcionario objeto = new Funcionario(cargo, salario , id, nome, email, senha, true);
 
                 MinhaLista.add(objeto);
             }
@@ -63,7 +64,7 @@ public class FuncionarioDAO extends ConnectionDAO{
 
     // Cadastra novo funcionário
     public boolean InsertFuncionarioBD(Funcionario objeto) {
-        String sql = "INSERT INTO Funcionario(id,nome,cargo,salario,email) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO Funcionario(id,nome,cargo,salario,email,senha) VALUES(?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -73,7 +74,8 @@ public class FuncionarioDAO extends ConnectionDAO{
             stmt.setString(3, objeto.getCargo());
             stmt.setDouble(4, objeto.getSalario());
             stmt.setString(5, objeto.getEmail());
-
+            stmt.setString(6, objeto.getSenha());
+            
             stmt.execute();
             stmt.close();
 
@@ -101,7 +103,7 @@ public class FuncionarioDAO extends ConnectionDAO{
     // Edita um funcionário especifico pelo seu campo ID
     public boolean UpdateFuncionarioBD(Funcionario objeto) {
 
-        String sql = "UPDATE Funcionario set nome = ? ,cargo = ? ,salario = ? ,email = ? WHERE id = ?";
+        String sql = "UPDATE Funcionario set nome = ? ,cargo = ? ,salario = ? ,email = ? ,senha = ? WHERE id = ?";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -110,7 +112,8 @@ public class FuncionarioDAO extends ConnectionDAO{
             stmt.setString(2, objeto.getCargo());
             stmt.setDouble(3, objeto.getSalario());
             stmt.setString(4, objeto.getEmail());
-            stmt.setInt(5, objeto.getId());
+            stmt.setString(5, objeto.getSenha());
+            stmt.setInt(6, objeto.getId());
 
             stmt.execute();
             stmt.close();
@@ -138,6 +141,7 @@ public class FuncionarioDAO extends ConnectionDAO{
             objeto.setCargo(res.getString("cargo"));
             objeto.setSalario(res.getDouble("curso"));
             objeto.setEmail(res.getString("email"));
+            objeto.setSenhaHash(res.getString("senha"));
 
             stmt.close();            
             
