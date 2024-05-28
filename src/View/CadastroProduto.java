@@ -1,19 +1,31 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package View;
-
-import Model.Aluno;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import Model.Produtos;
+import DAO.ProdutoDAO;
+import View.Mensagens;
 import javax.swing.JOptionPane;
+import View.CadastroProduto;
+import View.Home;
+/**
+ *
+ * @author rafae
+ */
+public class CadastroProduto extends javax.swing.JFrame {
 
-public class CadastroAluno extends javax.swing.JFrame {
-
-    private Aluno objaluno; // cria o v�nculo com o Aluno.java
-
-    public CadastroAluno() {
+    private Produtos objProduto;
+    public CadastroProduto() {
         initComponents();
-        this.objaluno = new Aluno(); // carrega objeto vazio de aluno
+        this.objProduto = new Produtos();
     }
+    /*
+    private Home objHome;
+    public CadastroProduto() {
+        initComponents();
+        this.objProduto = new Produtos();
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -24,191 +36,248 @@ public class CadastroAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        nome = new javax.swing.JTextField();
+        descricao = new javax.swing.JTextField();
+        quantidade = new javax.swing.JTextField();
+        bCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        c_nome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        c_idade = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        c_curso = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        c_fase = new javax.swing.JTextField();
-        b_cadastrar = new javax.swing.JButton();
-        b_cancelar = new javax.swing.JButton();
+        precos = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        imag = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
-        setTitle("Cadastro de Aluno");
+        setTitle("EditProduto");
+        setFocusableWindowState(true);
         setResizable(false);
-
-        jLabel1.setText("Nome:");
-
-        c_nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_nomeActionPerformed(evt);
+        addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
+            public void ancestorMoved(java.awt.event.HierarchyEvent evt) {
+            }
+            public void ancestorResized(java.awt.event.HierarchyEvent evt) {
+                formAncestorResized(evt);
             }
         });
 
-        jLabel2.setText("Idade: ");
-
-        jLabel3.setText("Curso: ");
-
-        c_curso.addActionListener(new java.awt.event.ActionListener() {
+        nome.setBackground(new java.awt.Color(255, 255, 255));
+        nome.setForeground(new java.awt.Color(0, 0, 0));
+        nome.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nomeFocusGained(evt);
+            }
+        });
+        nome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nomeMouseClicked(evt);
+            }
+        });
+        nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_cursoActionPerformed(evt);
+                nomeActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Fase: ");
-
-        c_fase.addActionListener(new java.awt.event.ActionListener() {
+        descricao.setBackground(new java.awt.Color(255, 255, 255));
+        descricao.setForeground(new java.awt.Color(0, 0, 0));
+        descricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_faseActionPerformed(evt);
+                descricaoActionPerformed(evt);
             }
         });
 
-        b_cadastrar.setText("Cadastrar");
-        b_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+        quantidade.setBackground(new java.awt.Color(255, 255, 255));
+        quantidade.setForeground(new java.awt.Color(0, 0, 0));
+        quantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_cadastrarActionPerformed(evt);
+                quantidadeActionPerformed(evt);
             }
         });
 
-        b_cancelar.setText("Cancelar");
-        b_cancelar.addActionListener(new java.awt.event.ActionListener() {
+        bCadastrar.setBackground(new java.awt.Color(0, 0, 0));
+        bCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        bCadastrar.setText("Cadastrar");
+        bCadastrar.setToolTipText("");
+        bCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_cancelarActionPerformed(evt);
+                bCadastrarActionPerformed(evt);
             }
         });
+
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Nome");
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Descrição");
+
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Quantidade");
+
+        precos.setBackground(new java.awt.Color(255, 255, 255));
+        precos.setForeground(new java.awt.Color(0, 0, 0));
+        precos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precosActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Preço");
+
+        imag.setBackground(new java.awt.Color(255, 255, 255));
+        imag.setForeground(new java.awt.Color(0, 0, 0));
+        imag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imagActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Imagem");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(precos, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imag, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(c_curso, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c_idade, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(c_fase, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(b_cancelar)
-                        .addGap(52, 52, 52)
-                        .addComponent(b_cadastrar))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(c_nome))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(88, 88, 88)
+                .addComponent(bCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(c_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(c_idade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(c_curso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(c_fase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(b_cadastrar)
-                    .addComponent(b_cancelar))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addGap(2, 2, 2)
+                .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel2)
+                .addGap(2, 2, 2)
+                .addComponent(descricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel3)
+                .addGap(2, 2, 2)
+                .addComponent(quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel5)
+                .addGap(2, 2, 2)
+                .addComponent(precos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel6)
+                .addGap(2, 2, 2)
+                .addComponent(imag, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(bCadastrar)
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(294, 470));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void c_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_nomeActionPerformed
+    private void descricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descricaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_c_nomeActionPerformed
+    }//GEN-LAST:event_descricaoActionPerformed
 
-    private void c_cursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_cursoActionPerformed
+    private void quantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_c_cursoActionPerformed
+    }//GEN-LAST:event_quantidadeActionPerformed
 
-    private void c_faseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_faseActionPerformed
+    private void bCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_c_faseActionPerformed
+         try {
+            // recebendo e validando dados da interface gr�fica.
+          String nome = "";
+          String descrição = "";
+            int quantidade = 0;
+            double precos = 0;
+            int peso = 0;
+           String imagem = "";
+           
+                    if(this.nome.getText().length()<2){
+                        throw new Mensagens("O campo deve conter pelo menos 2 caracteres");
+                    } else{
+                    nome = this.nome.getText();
+                    this.objProduto.setProduto(nome);
+                    
+                   }if(this.descricao.getText().length()<=0){
+                   throw new Mensagens("A descrição não pode estar vazia");
+                   }else{
+                   descrição = this.descricao.getText();
+                   this.objProduto.setdescricao(descrição); 
+                   }if(this.quantidade.getText().length()<=0){
+                   throw new Mensagens("a quantidade deve ser maior que zero");
+                   }else{ 
+                   quantidade = Integer.parseInt(this.quantidade.getText());
+                   this.objProduto.setquantidadeEstoque(quantidade); 
+                   }
+                   
+                   if(this.precos.getText().length()<=0){
+                   throw new Mensagens("O preço deve ser maior que zero");
+                   }else{ 
+                   precos = Double.parseDouble(this.precos.getText());
+                   this.objProduto.setpreco(precos);
 
-    private void b_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cadastrarActionPerformed
+                   }if(this.imag.getText().length()<=0){
+                   throw new Mensagens("Adicione uma imagem");
+                   } else{
+                   imagem = this.imag.getText();
+                   this.objProduto.setImagem(nome);
+                   }
+                  if (ProdutoDAO.InsertProdutoBD(this.objProduto)){
+                      JOptionPane.showMessageDialog(rootPane, "Produto Cadastrado com sucesso");
+                    this.nome.setText("");
+                    this.descricao.setText("");
+                    this.quantidade.setText("");
+                    this.precos.setText("");
+                    this.imag.setText("");
+                  } 
+                    //System.out.println();
+            }catch(Mensagens erro){
+                        JOptionPane.showMessageDialog(null, erro.getMessage());
+                   }   catch (NumberFormatException erro2){
+                       JOptionPane.showMessageDialog(null, "esse campo só aceita números");
+                   }
+    }//GEN-LAST:event_bCadastrarActionPerformed
 
-        try {
-            // recebendo e validando dados da interface gr�fica.
-            String nome = "";
-            int idade = 0;
-            String curso = "";
-            int fase = 0;
-
-            if (this.c_nome.getText().length() < 2) {
-                throw new Mensagens("Nome deve conter ao menos 2 caracteres.");
-            } else {
-                nome = this.c_nome.getText();
-            }
-
-            if (this.c_idade.getText().length() <= 0) {
-                throw new Mensagens("Idade deve ser n�mero e maior que zero.");
-            } else {
-                idade = Integer.parseInt(this.c_idade.getText());
-            }
-            
-            if (this.c_curso.getText().length() < 2) {
-                throw new Mensagens("Curso deve conter ao menos 2 caracteres.");
-            } else {
-                curso = this.c_curso.getText();
-            }
-
-            if (this.c_fase.getText().length() <= 0) {
-                throw new Mensagens("Fase deve ser n�mero e maior que zero.");
-            } else {
-                fase = Integer.parseInt(this.c_fase.getText());
-            }
-
-            // envia os dados para o Controlador cadastrar
-            if (this.objaluno.InsertAlunoBD(curso, fase, nome, idade)) {
-                JOptionPane.showMessageDialog(rootPane, "Aluno Cadastrado com Sucesso!");
-
-                // limpa campos da interface
-                this.c_nome.setText("");
-                this.c_idade.setText("");
-                this.c_curso.setText("");
-                this.c_fase.setText("");
-
-            }
-
-            System.out.println(this.objaluno.getMinhaLista().toString());
-
-        } catch (Mensagens erro) {
-            JOptionPane.showMessageDialog(null, erro.getMessage());
-        } catch (NumberFormatException erro2) {
-            JOptionPane.showMessageDialog(null, "Informe um n�mero.");
-        } catch (SQLException ex) {
-            Logger.getLogger(CadastroAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
-    }//GEN-LAST:event_b_cadastrarActionPerformed
-
-    private void b_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_cancelarActionPerformed
+    private void nomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeMouseClicked
         // TODO add your handling code here:
-        this.setVisible(false);
+    }//GEN-LAST:event_nomeMouseClicked
 
-    }//GEN-LAST:event_b_cancelarActionPerformed
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeActionPerformed
+
+    private void nomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nomeFocusGained
+
+    }//GEN-LAST:event_nomeFocusGained
+
+    private void formAncestorResized(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formAncestorResized
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formAncestorResized
+
+    private void precosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precosActionPerformed
+
+    private void imagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imagActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_imagActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,34 +296,38 @@ public class CadastroAluno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroAluno().setVisible(true);
+                new CadastroProduto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton b_cadastrar;
-    private javax.swing.JButton b_cancelar;
-    private javax.swing.JTextField c_curso;
-    private javax.swing.JTextField c_fase;
-    private javax.swing.JTextField c_idade;
-    private javax.swing.JTextField c_nome;
+    private javax.swing.JButton bCadastrar;
+    private javax.swing.JTextField descricao;
+    private javax.swing.JTextField imag;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField precos;
+    private javax.swing.JTextField quantidade;
     // End of variables declaration//GEN-END:variables
 }
