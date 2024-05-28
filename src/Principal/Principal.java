@@ -1,11 +1,11 @@
 package Principal;
 
-import View.HomeClient;
+import View.Home;
 
 public class Principal {
 
     public static void main(String[] args) {
-        HomeClient objetotela = new HomeClient();
+        Home objetotela = new Home();
         objetotela.setVisible(true);
     }
     
