@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Produto;
+import Model.Produtos;
 import java.util.*;
 
 import javax.imageio.ImageIO;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 public class ProdutoDAO extends ConnectionDAO {
     
-    public static ArrayList<Produto> MinhaLista = new ArrayList<Produto>();
+    public static ArrayList<Produtos> MinhaLista = new ArrayList<Produtos>();
 
     public ProdutoDAO(){
     }
@@ -43,7 +43,7 @@ public class ProdutoDAO extends ConnectionDAO {
                 imageByte = res.getBytes("imagem");
                 Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
 
-                Produto objeto = new Produto(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, peso, imagem);
+                Produtos objeto = new Produtos(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, peso, imagem);
 
                 MinhaLista.add(objeto);
             }
@@ -57,7 +57,7 @@ public class ProdutoDAO extends ConnectionDAO {
     }
 
     // Cadastra novo Produto
-    public boolean InsertProdutoBD(Produto objeto) {
+    public boolean InsertProdutoBD(Produtos objeto) {
         String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preco,cadastro,peso,imagem) VALUES(?,?,?,?,?,?,?,?)";
         
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -105,7 +105,7 @@ public class ProdutoDAO extends ConnectionDAO {
     }
 
     // Atualizar as informações em um Produto
-    public boolean UpdateProdutoBD(Produto objeto) {
+    public boolean UpdateProdutoBD(Produtos objeto) {
 
         String sql = "UPDATE Produto set nome = ? ,descricao = ? ,estoque = ? ,preco = ?, cadastro = ?, peso = ?, imagem = ? WHERE id = ?";
 
@@ -141,9 +141,9 @@ public class ProdutoDAO extends ConnectionDAO {
     }
 
     // Carregar um Produto especifico
-    public Produto CarregarProduto(int id) {
+    public Produtos CarregarProduto(int id) {
         
-        Produto objeto = new Produto();
+        Produtos objeto = new Produtos();
         objeto.setid(id);
         
         try {
@@ -194,7 +194,7 @@ public class ProdutoDAO extends ConnectionDAO {
                 imageByte = res.getBytes("imagem");
                 Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
 
-                Produto objeto = new Produto(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, peso, imagem);
+                Produtos objeto = new Produtos(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, peso, imagem);
 
                 MinhaLista.add(objeto);
             }

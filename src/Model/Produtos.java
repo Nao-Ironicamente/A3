@@ -3,7 +3,7 @@ package Model;
 import java.time.LocalDate;
 import java.awt.Image;
 
-public class Produto {
+public class Produtos {
 
     
 
@@ -17,10 +17,10 @@ public class Produto {
     private Image imagem;
 
 
-    public Produto() {
+    public Produtos() {
     }
 
-    public Produto(int id, String produto, String descricao, int quantidadeEstoque, double preco, LocalDate dataCadastro, double peso, Image imagem) {
+    public Produtos(int id, String produto, String descricao, int quantidadeEstoque, double preco, LocalDate dataCadastro, double peso, Image imagem) {
         this.id = id;
         this.produto = produto;
         this.descricao = descricao;
