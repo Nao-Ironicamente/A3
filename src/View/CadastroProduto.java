@@ -37,7 +37,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         c_preco = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
 
-        setTitle("Cadastro de Aluno");
+        setTitle("Cadastro de Produto");
         setResizable(false);
 
         jLabel1.setText("Nome:");
