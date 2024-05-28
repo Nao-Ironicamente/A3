@@ -1,11 +1,16 @@
 package Model;
 
 import java.time.LocalDate;
+
+import javax.imageio.ImageIO;
+
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-public class Produto {
-
-    
+public class Produtos {
 
     private int id;
     private String produto;
@@ -16,11 +21,10 @@ public class Produto {
     private double peso;
     private Image imagem;
 
-
-    public Produto() {
+    public Produtos() {
     }
 
-    public Produto(int id, String produto, String descricao, int quantidadeEstoque, double preco, LocalDate dataCadastro, double peso, Image imagem) {
+    public Produtos(int id, String produto, String descricao, int quantidadeEstoque, double preco, LocalDate dataCadastro, double peso, Image imagem) {
         this.id = id;
         this.produto = produto;
         this.descricao = descricao;
@@ -79,12 +83,27 @@ public class Produto {
         this.dataCadastro = dataCadastro;
     }
 
-    public Image getImagem(){
+    public Image getImagem() {
         return this.imagem;
     }
 
-    public void setImagem(Image imagem){
+    public void setImagem(Image imagem) {
         this.imagem = imagem;
+    }
+
+    public void setImagem(String Link) {
+        try {
+            this.imagem = (Image) ImageIO.read(new URL(Link));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            try {
+                this.imagem = (Image) ImageIO.read(new File(Link));
+            } catch (Exception er) {
+                er.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public double getPeso() {
@@ -94,13 +113,13 @@ public class Produto {
     public void setPeso(double peso) {
         this.peso = peso;
     }
-    
+
     //método para verificar o estoque do produto
-    public void verificarEstoque () {
-        if (quantidadeEstoque == 0){
-            System.out.println("O produto está sem estoque no momento");}
-        else {
-            System.out.println ("O estoque do produto é: " + quantidadeEstoque);
+    public void verificarEstoque() {
+        if (quantidadeEstoque == 0) {
+            System.out.println("O produto está sem estoque no momento");
+        } else {
+            System.out.println("O estoque do produto é: " + quantidadeEstoque);
         }
     }
 
@@ -112,7 +131,15 @@ public class Produto {
         System.out.println("Quantidade em Estoque: " + quantidadeEstoque);
         System.out.println("preco: " + preco);
         System.out.println("Peso: " + peso);
-        System.out.println("Data de Cadastro: " + dataCadastro);  
-        System.out.println("Imagem Inclusa: "+ String.valueOf(imagem != null));
+        System.out.println("Data de Cadastro: " + dataCadastro);
+        System.out.println("Imagem Inclusa: " + String.valueOf(imagem != null));
+    }
+
+    public boolean InsertProdutoBD(String nome, String descricao, double peso, int quantidade, double preco) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Object getMinhaLista() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

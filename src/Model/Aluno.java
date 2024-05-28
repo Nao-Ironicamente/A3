@@ -26,7 +26,7 @@ public class Aluno extends Pessoa {
 
     // Método Construtor usando também o construtor da SUPERCLASSE
     public Aluno(String curso, int fase, int id, int idade ,String nome, String email) {
-        super(id, nome, email);
+        super(id, nome, email, "");
         this.idade = idade;
         this.curso = curso;
         this.fase = fase;

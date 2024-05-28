@@ -2,33 +2,27 @@ package Model;
 
 public class Cliente extends Pessoa {
     
-    
-    private int pessoa_id;
     private String telefone;
     private String endereco;
 
     public Cliente() {
     }
 
-    public Cliente(int pessoa_id, String telefone, String endereco) {
-        this.pessoa_id = pessoa_id;
+    public Cliente(String telefone, String endereco) {
         this.telefone = telefone;
         this.endereco = endereco;
     }
 
-    public Cliente(int pessoa_id, String telefone, String endereco, int id, String nome, String email) {
-        super(id, nome, email);
-        this.pessoa_id = pessoa_id;
+    public Cliente(String telefone, String endereco, int id, String nome, String email, String senha) {
+        super(id, nome, email, senha);
         this.telefone = telefone;
         this.endereco = endereco;
     }
 
-    public int getPessoa_id() {
-        return pessoa_id;
-    }
-
-    public void setPessoa_id(int pessoa_id) {
-        this.pessoa_id = pessoa_id;
+    public Cliente(String telefone, String endereco, int id, String nome, String email, String senha, Boolean senhaHash) {
+        super(id, nome, email, senha, senhaHash);
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
@@ -55,6 +49,16 @@ public class Cliente extends Pessoa {
     public void alterarTelefone (String novoTelefone){
         this.telefone = novoTelefone;
     }
+
+    public void imprimirDadosCliente() {
+        System.out.println("ID: " + getId());
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Telefone: " + telefone);
+        System.out.println("Endereço: " + endereco);
+        System.out.println("Hash da Senha: "+ "*".repeat(getSenha().length()));
+    }
+
 }
     
     
