@@ -1,7 +1,14 @@
 package Model;
 
 import java.time.LocalDate;
+
+import javax.imageio.ImageIO;
+
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Produto {
 
@@ -85,6 +92,21 @@ public class Produto {
 
     public void setImagem(Image imagem){
         this.imagem = imagem;
+    }
+
+    public void setImagem(String Link){
+        try {
+            this.imagem = (Image)ImageIO.read(new URL(Link));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            try{
+                this.imagem = (Image)ImageIO.read(new File(Link));
+            }catch(Exception er){
+                er.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public double getPeso() {
