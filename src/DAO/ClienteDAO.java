@@ -10,7 +10,7 @@ import Model.Cliente;
 
 public class ClienteDAO extends ConnectionDAO {
 
-        public static ArrayList<Cliente> MinhaLista = new ArrayList<Cliente>();
+    public static ArrayList<Cliente> MinhaLista = new ArrayList<Cliente>();
 
     public ClienteDAO() {
     }
@@ -49,7 +49,6 @@ public class ClienteDAO extends ConnectionDAO {
                 String telefone = res.getString("telefone");
 
                 //Cliente objeto = new Cliente(telefone, endereco, id, nome, email);
-
                 //MinhaLista.add(objeto);
             }
 
@@ -90,7 +89,7 @@ public class ClienteDAO extends ConnectionDAO {
         try {
             Statement stmt = this.getConexao().createStatement();
             stmt.executeUpdate("DELETE FROM Cliente WHERE id = " + id);
-            stmt.close();            
+            stmt.close();
 
         } catch (SQLException erro) {
         }
@@ -139,7 +138,7 @@ public class ClienteDAO extends ConnectionDAO {
             objeto.setEmail(res.getString("email"));
             objeto.setTelefone(res.getString("telefone"));
 
-            stmt.close();            
+            stmt.close();
 
         } catch (SQLException erro) {
         }

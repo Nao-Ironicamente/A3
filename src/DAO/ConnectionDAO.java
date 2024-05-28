@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConnectionDAO {
     
-    public Connection getConexao() {
+    public static Connection getConexao() {
 
         Connection connection = null;  //instancia da conexão
 

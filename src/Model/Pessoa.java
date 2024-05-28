@@ -1,8 +1,7 @@
 package Model;
 
 public class Pessoa {
-    
-    
+
     private int id;
     private String nome;
     private String email;
@@ -39,24 +38,17 @@ public class Pessoa {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     //métodos adicionais
     public void imprimirDetalhes() {
-    System.out.println("ID: " + id);
-    System.out.println("Nome: " + nome);
-    System.out.println("Email: " + email);
-}
+        System.out.println("ID: " + id);
+        System.out.println("Nome: " + nome);
+        System.out.println("Email: " + email);
+    }
 
-public void alterarEmail(String novoEmail) {
-    this.email = novoEmail;
-    
- 
-     
-}
+    public void alterarEmail(String novoEmail) {
+        this.email = novoEmail;
+
+    }
 
 }
-
-    
-    
-   
-

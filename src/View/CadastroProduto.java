@@ -3,9 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-import Model.Produtos;
+
+import Model.Produto;
 import DAO.ProdutoDAO;
-import View.Mensagens;
+import View.*;
 import javax.swing.JOptionPane;
 import View.CadastroProduto;
 import View.Home;
@@ -15,16 +16,16 @@ import View.Home;
  */
 public class CadastroProduto extends javax.swing.JFrame {
 
-    private Produtos objProduto;
+    private Produto objProduto;
     public CadastroProduto() {
         initComponents();
-        this.objProduto = new Produtos();
+        this.objProduto = new Produto();
     }
     /*
     private Home objHome;
     public CadastroProduto() {
         initComponents();
-        this.objProduto = new Produtos();
+        this.objProduto = new Produto();
     }*/
 
     /**
@@ -236,8 +237,8 @@ public class CadastroProduto extends javax.swing.JFrame {
                    }if(this.imag.getText().length()<=0){
                    throw new Mensagens("Adicione uma imagem");
                    } else{
-                   imagem = this.imag.getText();
-                   this.objProduto.setImagem(nome);
+//                   imagem = this.imag.getText();
+//                   this.objProduto.setImagem(imagem);
                    }
                   if (ProdutoDAO.InsertProdutoBD(this.objProduto)){
                       JOptionPane.showMessageDialog(rootPane, "Produto Cadastrado com sucesso");
@@ -296,13 +297,13 @@ public class CadastroProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Produtos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Produto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

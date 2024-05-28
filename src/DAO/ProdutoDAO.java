@@ -56,7 +56,7 @@ public class ProdutoDAO extends ConnectionDAO {
     }
 
     // Cadastra novo Produto
-    public boolean InsertProdutoBD(Produto objeto) {
+    public static boolean InsertProdutoBD(Produto objeto) {
         String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preco,cadastro) VALUES(?,?,?,?,?,?)";
         
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -68,7 +68,7 @@ public class ProdutoDAO extends ConnectionDAO {
         byte[] imagemByte = baos.toByteArray();
 
         try {
-            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            PreparedStatement stmt = ConnectionDAO.getConexao().prepareStatement(sql);
 
             stmt.setInt(1, objeto.getid());
             stmt.setString(2, objeto.getProduto());
