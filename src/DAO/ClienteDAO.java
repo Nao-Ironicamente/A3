@@ -47,8 +47,9 @@ public class ClienteDAO extends ConnectionDAO {
                 String endereco = res.getString("endereco");
                 String email = res.getString("email");
                 String telefone = res.getString("telefone");
+                String senha = res.getString("senha");
 
-                Cliente objeto = new Cliente(telefone, endereco, id, nome, email);
+                Cliente objeto = new Cliente (telefone, endereco, id, nome, email, senha, true);
 
                 MinhaLista.add(objeto);
             }
@@ -63,7 +64,7 @@ public class ClienteDAO extends ConnectionDAO {
 
     // Cadastra novo cliente
     public boolean InsertClienteBD(Cliente objeto) {
-        String sql = "INSERT INTO Cliente(id,nome,endereco,email,telefone) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO Cliente(id,nome,endereco,email,telefone,senha) VALUES(?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -73,7 +74,8 @@ public class ClienteDAO extends ConnectionDAO {
             stmt.setString(3, objeto.getEndereco());
             stmt.setString(4, objeto.getEmail());
             stmt.setString(5, objeto.getTelefone());
-
+            stmt.setString(6, objeto.getSenha());
+            
             stmt.execute();
             stmt.close();
 
@@ -101,7 +103,7 @@ public class ClienteDAO extends ConnectionDAO {
     // Edita um cliente especifico pelo seu campo ID
     public boolean UpdateClienteBD(Cliente objeto) {
 
-        String sql = "UPDATE Cliente set nome = ? ,endereco = ? ,email = ? ,telefone = ? WHERE id = ?";
+        String sql = "UPDATE Cliente set nome = ? ,endereco = ? ,email = ? ,telefone = ? ,senha = ? WHERE id = ?";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -110,7 +112,8 @@ public class ClienteDAO extends ConnectionDAO {
             stmt.setString(2, objeto.getEndereco());
             stmt.setString(3, objeto.getEmail());
             stmt.setString(4, objeto.getTelefone());
-            stmt.setInt(5, objeto.getId());
+            stmt.setString(5, objeto.getSenha());
+            stmt.setInt(6, objeto.getId());
 
             stmt.execute();
             stmt.close();
@@ -138,7 +141,8 @@ public class ClienteDAO extends ConnectionDAO {
             objeto.setEndereco(res.getString("endereco"));
             objeto.setEmail(res.getString("email"));
             objeto.setTelefone(res.getString("telefone"));
-
+            objeto.setSenhaHash(res.getString("senha"));
+            
             stmt.close();            
 
         } catch (SQLException erro) {
