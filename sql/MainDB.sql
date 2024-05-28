@@ -19,6 +19,7 @@ CREATE TABLE Funcionario (
   cargo VARCHAR(80),
   salario DECIMAL(20,3),
   email VARCHAR(20),
+  senha VARCHAR(33),
   PRIMARY KEY (id)
 );
 
@@ -28,6 +29,7 @@ CREATE TABLE Cliente(
   endereco VARCHAR(250),
   email VARCHAR(100),
   telefone VARCHAR(20),
+  senha VARCHAR(33),
   PRIMARY KEY (id)
 )
 
