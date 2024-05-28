@@ -1,7 +1,14 @@
 package Model;
 
 import java.time.LocalDate;
+
+import javax.imageio.ImageIO;
+
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Produto {
 
@@ -82,7 +89,20 @@ public class Produto {
         this.imagem = imagem;
     }
 
-
+    public void setImagem(String Link){
+        try {
+            this.imagem = (Image)ImageIO.read(new URL(Link));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+            try{
+                this.imagem = (Image)ImageIO.read(new File(Link));
+            }catch(Exception er){
+                er.printStackTrace();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //método para verificar o estoque do produto
     public void verificarEstoque() {
         if (quantidadeEstoque == 0) {
@@ -101,5 +121,13 @@ public class Produto {
         System.out.println("preco: " + preco);
         System.out.println("Data de Cadastro: " + dataCadastro);
         System.out.println("Imagem Inclusa: " + String.valueOf(imagem != null));
+    }
+
+    public boolean InsertProdutoBD(String nome, String descricao, double peso, int quantidade, double preco) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public Object getMinhaLista() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
