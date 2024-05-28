@@ -1,34 +1,28 @@
 package Model;
 
 public class Cliente extends Pessoa {
-    
-    
-    private int pessoa_id;
+
     private String telefone;
     private String endereco;
+    private String senha;
 
     public Cliente() {
     }
 
-    public Cliente(int pessoa_id, String telefone, String endereco) {
-        this.pessoa_id = pessoa_id;
+    public Cliente(int id, String telefone, String endereco) {
+        this.setId(id);
         this.telefone = telefone;
         this.endereco = endereco;
+        this.senha = senha;
     }
 
-    public Cliente(int pessoa_id, String telefone, String endereco, int id, String nome, String email) {
-        super(id, nome, email);
-        this.pessoa_id = pessoa_id;
+    public Cliente(int id, String telefone, String endereco, String nome, String email, String senha) {
+        this.setId(id);
+        this.setNome(nome);
+        this.setEmail(email);
         this.telefone = telefone;
         this.endereco = endereco;
-    }
-
-    public int getPessoa_id() {
-        return pessoa_id;
-    }
-
-    public void setPessoa_id(int pessoa_id) {
-        this.pessoa_id = pessoa_id;
+        this.senha = senha;
     }
 
     public String getTelefone() {
@@ -47,21 +41,20 @@ public class Cliente extends Pessoa {
         this.endereco = endereco;
     }
     
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
     //métodos
-    public void alterarEndereco (String novoEndereco){
+    public void alterarEndereco(String novoEndereco) {
         this.endereco = novoEndereco;
     }
-    
-    public void alterarTelefone (String novoTelefone){
+
+    public void alterarTelefone(String novoTelefone) {
         this.telefone = novoTelefone;
     }
 }
-    
-    
-    
-    
-    
-    
-
-   
-

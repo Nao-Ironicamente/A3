@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-import View.Funcionario;
+//import View.Funcionario;
 
 /**
  *
@@ -956,8 +956,8 @@ public class HomeClient extends javax.swing.JFrame {
 
     private void menuFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFuncionarioActionPerformed
         // TODO add your handling code here:
-        Funcionario obj = new Funcionario();
-        obj.setVisible(true);
+//        Funcionario obj = new Funcionario();
+//        obj.setVisible(true);
         
     }//GEN-LAST:event_menuFuncionarioActionPerformed
 
