@@ -1,7 +1,6 @@
 package Model;
 
 public class Cliente extends Pessoa {
-
     private String telefone;
     private String endereco;
     private String senha;
@@ -13,7 +12,6 @@ public class Cliente extends Pessoa {
         this.setId(id);
         this.telefone = telefone;
         this.endereco = endereco;
-        this.senha = senha;
     }
 
     public Cliente(int id, String telefone, String endereco, String nome, String email, String senha) {
@@ -57,4 +55,23 @@ public class Cliente extends Pessoa {
     public void alterarTelefone(String novoTelefone) {
         this.telefone = novoTelefone;
     }
+
+    public void imprimirDadosCliente() {
+        System.out.println("ID: " + getId());
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Telefone: " + telefone);
+        System.out.println("Endereço: " + endereco);
+        System.out.println("Hash da Senha: "+ "*".repeat(getSenha().length()));
+    }
+
 }
+    
+    
+    
+    
+    
+    
+
+   
+

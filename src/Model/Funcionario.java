@@ -3,32 +3,27 @@ package Model;
 public class Funcionario extends Pessoa {
     
     
-    private int pessoa_id;
     private String cargo;
     private double salario;
 
     public Funcionario() {
     }
 
-    public Funcionario(int pessoa_id, String cargo, double salario) {
-        this.pessoa_id = pessoa_id;
+    public Funcionario(String cargo, double salario) {
         this.cargo = cargo;
         this.salario = salario;
     }
 
-    public Funcionario(int pessoa_id, String cargo, double salario, int id, String nome, String email) {
-        super(id, nome, email);
-        this.pessoa_id = pessoa_id;
+    public Funcionario(String cargo, double salario, int id, String nome, String email, String senha) {
+        super(id, nome, email, senha);
         this.cargo = cargo;
         this.salario = salario;
     }
 
-    public int getPessoa_id() {
-        return pessoa_id;
-    }
-
-    public void setPessoa_id(int pessoa_id) {
-        this.pessoa_id = pessoa_id;
+    public Funcionario(String cargo, double salario, int id, String nome, String email, String senha, Boolean senhaHash) {
+        super(id, nome, email, senha, senhaHash);
+        this.cargo = cargo;
+        this.salario = salario;
     }
 
     public String getCargo() {
@@ -47,43 +42,22 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 
+    public void alterarCargo(String novoCargo) {
+        this.cargo = novoCargo;
+    }
+    
+    public double calcularBonus(double percentual) {
+        return this.salario * percentual / 100;
+    }
     
     //metodos
     public void imprimirDadosFuncionario() {
-    System.out.println("ID: " + getId());
-    System.out.println("Nome: " + getNome());
-    System.out.println("Email: " + getEmail());
-    System.out.println("Pessoa ID: " + pessoa_id);
-    System.out.println("Cargo: " + cargo);
-    System.out.println("Salário: " + salario);
-}
-    public void alterarCargo(String novoCargo) {
-    this.cargo = novoCargo;
+        System.out.println("ID: " + getId());
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("Cargo: " + cargo);
+        System.out.println("Salário: " + salario);
+        System.out.println("Hash da Senha: "+ "*".repeat(getSenha().length()));
     }
-    
-     public double calcularBonus(double percentual) {
-        return this.salario * percentual / 100;
+
 }
-
-
-
-    
-    
-    
-    
-  
-    }
-    
-    
-    
-    
-    
-
-   
-
-    
-    
-            
-
-
-
