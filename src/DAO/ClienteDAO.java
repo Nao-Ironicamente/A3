@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import Model.Cliente;
 
 public class ClienteDAO extends ConnectionDAO {
-
-    public static ArrayList<Cliente> MinhaLista = new ArrayList<Cliente>();
+    
+        public static ArrayList<Cliente> MinhaLista = new ArrayList<Cliente>();
 
     public ClienteDAO() {
     }
@@ -47,15 +47,11 @@ public class ClienteDAO extends ConnectionDAO {
                 String endereco = res.getString("endereco");
                 String email = res.getString("email");
                 String telefone = res.getString("telefone");
+                String senha = res.getString("senha");
 
-<<<<<<<< HEAD:src/DAO/ClienteDAO.java
-                //Cliente objeto = new Cliente(telefone, endereco, id, nome, email);
-                //MinhaLista.add(objeto);
-========
-                Aluno objeto = new Aluno(curso, fase, id, idade, nome, null);
+                Cliente objeto = new Cliente (telefone, endereco, id, nome, email, senha, true);
 
                 MinhaLista.add(objeto);
->>>>>>>> main:src/DAO/AlunoDAO.java
             }
 
             stmt.close();
@@ -68,7 +64,7 @@ public class ClienteDAO extends ConnectionDAO {
 
     // Cadastra novo cliente
     public boolean InsertClienteBD(Cliente objeto) {
-        String sql = "INSERT INTO Cliente(id,nome,endereco,email,telefone) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO Cliente(id,nome,endereco,email,telefone,senha) VALUES(?,?,?,?,?,?)";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -78,7 +74,8 @@ public class ClienteDAO extends ConnectionDAO {
             stmt.setString(3, objeto.getEndereco());
             stmt.setString(4, objeto.getEmail());
             stmt.setString(5, objeto.getTelefone());
-
+            stmt.setString(6, objeto.getSenha());
+            
             stmt.execute();
             stmt.close();
 
@@ -95,7 +92,7 @@ public class ClienteDAO extends ConnectionDAO {
         try {
             Statement stmt = this.getConexao().createStatement();
             stmt.executeUpdate("DELETE FROM Cliente WHERE id = " + id);
-            stmt.close();
+            stmt.close();            
 
         } catch (SQLException erro) {
         }
@@ -106,7 +103,7 @@ public class ClienteDAO extends ConnectionDAO {
     // Edita um cliente especifico pelo seu campo ID
     public boolean UpdateClienteBD(Cliente objeto) {
 
-        String sql = "UPDATE Cliente set nome = ? ,endereco = ? ,email = ? ,telefone = ? WHERE id = ?";
+        String sql = "UPDATE Cliente set nome = ? ,endereco = ? ,email = ? ,telefone = ? ,senha = ? WHERE id = ?";
 
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -115,7 +112,8 @@ public class ClienteDAO extends ConnectionDAO {
             stmt.setString(2, objeto.getEndereco());
             stmt.setString(3, objeto.getEmail());
             stmt.setString(4, objeto.getTelefone());
-            stmt.setInt(5, objeto.getId());
+            stmt.setString(5, objeto.getSenha());
+            stmt.setInt(6, objeto.getId());
 
             stmt.execute();
             stmt.close();
@@ -143,8 +141,9 @@ public class ClienteDAO extends ConnectionDAO {
             objeto.setEndereco(res.getString("endereco"));
             objeto.setEmail(res.getString("email"));
             objeto.setTelefone(res.getString("telefone"));
-
-            stmt.close();
+            objeto.setSenhaHash(res.getString("senha"));
+            
+            stmt.close();            
 
         } catch (SQLException erro) {
         }
