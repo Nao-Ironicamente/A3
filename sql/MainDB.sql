@@ -31,17 +31,6 @@ CREATE TABLE Cliente(
   PRIMARY KEY (id)
 );
 
-#Compatibilidade
-CREATE TABLE tb_alunos (
-  id INT NOT NULL,
-  nome varchar(80),
-  idade int,
-  curso VARCHAR(80),
-  fase VARCHAR(20),
-  matricula VARCHAR(50),
-  PRIMARY KEY (id)
-);
-
 CREATE TABLE Produto (
   id INT NOT NULL,
   nome VARCHAR(50),
