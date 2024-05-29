@@ -37,7 +37,7 @@ public class ProdutoDAO extends ConnectionDAO {
                 int quantidadeEstoque = res.getInt("estoque");
                 Double preco = res.getDouble("preco");
                 LocalDate dataCadastro = res.getDate("cadastro").toLocalDate();
-
+                
                 byte[] imageByte = null;
                 imageByte = res.getBytes("imagem");
                 Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
@@ -56,8 +56,8 @@ public class ProdutoDAO extends ConnectionDAO {
     }
 
     // Cadastra novo Produto
-    public static boolean InsertProdutoBD(Produto objeto) {
-        String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preco,cadastro) VALUES(?,?,?,?,?,?)";
+    public boolean InsertProdutoBD(Produto objeto) {
+        String sql = "INSERT INTO Produto(id,nome,descricao,estoque,preco,cadastro,imagem) VALUES(?,?,?,?,?,?,?)";
         
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try{
@@ -105,7 +105,7 @@ public class ProdutoDAO extends ConnectionDAO {
     // Atualizar as informações em um Produto
     public boolean UpdateProdutoBD(Produto objeto) {
 
-        String sql = "UPDATE Produto set nome = ? ,descricao = ? ,estoque = ? ,preco = ?, cadastro = ? WHERE id = ?";
+        String sql = "UPDATE Produto set nome = ? ,descricao = ? ,estoque = ? ,preco = ?, cadastro = ?, imagem = ? WHERE id = ?";
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try{
@@ -123,8 +123,8 @@ public class ProdutoDAO extends ConnectionDAO {
             stmt.setInt(3, objeto.getquantidadeEstoque());
             stmt.setDouble(4, objeto.getpreco());
             stmt.setDate(5, java.sql.Date.valueOf(objeto.getdataCadastro()));
-            stmt.setInt(6, objeto.getid());
-            stmt.setBytes(7, imagemByte);
+            stmt.setBytes(6, imagemByte);
+            stmt.setInt(7, objeto.getid());
 
             stmt.execute();
             stmt.close();
@@ -137,7 +137,7 @@ public class ProdutoDAO extends ConnectionDAO {
 
     }
 
-    // Carear um Produto especifico
+    // Carregar um Produto especifico
     public Produto CarregarProduto(int id) {
         
         Produto objeto = new Produto();
@@ -165,5 +165,40 @@ public class ProdutoDAO extends ConnectionDAO {
         } catch (SQLException erro) {
         }
         return objeto;
+    }
+
+    //Pesquisar por Produto
+    public ArrayList PesquisarProduto(String termoDePesquisa){
+
+        MinhaLista.clear(); // Limpa nosso ArrayList
+
+        try {
+            Statement stmt = this.getConexao().createStatement();
+            ResultSet res = stmt.executeQuery("select * from `Produto` where `nome` rlike '"+termoDePesquisa+"' union " + // Executar a pesquisa no BD
+                                              "select * from `Produto` where `descricao` rlike '"+termoDePesquisa+"';");
+            while (res.next()) {
+
+                int id = res.getInt("id");
+                String nome = res.getString("nome");
+                String descricao = res.getString("descricao");
+                int quantidadeEstoque = res.getInt("estoque");
+                Double preco = res.getDouble("preco");
+                LocalDate dataCadastro = res.getDate("cadastro").toLocalDate();
+                
+                byte[] imageByte = null;
+                imageByte = res.getBytes("imagem");
+                Image imagem = Toolkit.getDefaultToolkit().createImage(imageByte);
+
+                Produto objeto = new Produto(id, nome, descricao, quantidadeEstoque, preco, dataCadastro, imagem);
+
+                MinhaLista.add(objeto);
+            }
+
+            stmt.close();
+
+        } catch (SQLException ex) {
+        }
+
+        return MinhaLista;
     }
 }

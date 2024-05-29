@@ -203,6 +203,7 @@ public class CadastroProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
          try {
             // recebendo e validando dados da interface gr�fica.
+            ProdutoDAO PdDAO = new ProdutoDAO();
           String nome = "";
           String descrição = "";
             int quantidade = 0;
@@ -240,7 +241,7 @@ public class CadastroProduto extends javax.swing.JFrame {
 //                   imagem = this.imag.getText();
 //                   this.objProduto.setImagem(imagem);
                    }
-                  if (ProdutoDAO.InsertProdutoBD(this.objProduto)){
+                  if (PdDAO.InsertProdutoBD(this.objProduto)){
                       JOptionPane.showMessageDialog(rootPane, "Produto Cadastrado com sucesso");
                     this.nome.setText("");
                     this.descricao.setText("");

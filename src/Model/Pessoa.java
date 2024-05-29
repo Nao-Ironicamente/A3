@@ -2,6 +2,8 @@ package Model;
 
 import Hash.MD5;
 
+import Hash.MD5;
+
 public class Pessoa {
 
     private int id;
@@ -23,6 +25,11 @@ public class Pessoa {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        if (senhaHash){
+            this.senha = senha;
+        }else{
+            this.senha = MD5.getMd5(senha);
+        }
         if (senhaHash){
             this.senha = senha;
         }else{
@@ -52,11 +59,6 @@ public class Pessoa {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void alterarEmail(String novoEmail) {
-        this.email = novoEmail;
-
     }
 
     public String getSenha(){

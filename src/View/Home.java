@@ -48,10 +48,9 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
+        setBackground(new java.awt.Color(30, 30, 30));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/bola.jpg"))); // NOI18N
 
         jTextField1.setEditable(false);
         jTextField1.setFont(new java.awt.Font("Trebuchet MS", 1, 20)); // NOI18N

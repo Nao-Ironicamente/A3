@@ -37,6 +37,7 @@ public class Cadastro extends javax.swing.JFrame {
         cadastrar = new java.awt.Button();
         jLabel5 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(30, 30, 30));
         addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 formFocusGained(evt);
@@ -84,7 +85,7 @@ public class Cadastro extends javax.swing.JFrame {
         cadastrar.setActionCommand("cadastrar");
         cadastrar.setBackground(new java.awt.Color(0, 0, 0));
         cadastrar.setForeground(new java.awt.Color(255, 255, 255));
-        cadastrar.setLabel("Cadastro");
+        cadastrar.setLabel("Login");
         cadastrar.setName("cadastrar"); // NOI18N
         cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +94,7 @@ public class Cadastro extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Login");
+        jLabel5.setText("Cadastro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,11 +116,11 @@ public class Cadastro extends javax.swing.JFrame {
                             .addComponent(SenhaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(emailFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(55, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(115, 115, 115)
+                .addComponent(jLabel5)
+                .addGap(115, 115, 115))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,7 +214,7 @@ public class Cadastro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cadastro().setVisible(true);
+                new Cliente().setVisible(true);
             }
         });
     }

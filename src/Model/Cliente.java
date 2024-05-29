@@ -1,9 +1,10 @@
 package Model;
 
 public class Cliente extends Pessoa {
+    
     private String telefone;
     private String endereco;
-    private String senha;
+
 
     public Cliente() {
     }
@@ -14,13 +15,16 @@ public class Cliente extends Pessoa {
         this.endereco = endereco;
     }
 
-    public Cliente(int id, String telefone, String endereco, String nome, String email, String senha) {
-        this.setId(id);
-        this.setNome(nome);
-        this.setEmail(email);
+    public Cliente(String telefone, String endereco, int id, String nome, String email, String senha) {
+        super(id, nome, email, senha);
         this.telefone = telefone;
         this.endereco = endereco;
-        this.senha = senha;
+    }
+
+    public Cliente(String telefone, String endereco, int id, String nome, String email, String senha, Boolean senhaHash) {
+        super(id, nome, email, senha, senhaHash);
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
@@ -37,14 +41,6 @@ public class Cliente extends Pessoa {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
-    }
-    
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     //métodos
@@ -64,7 +60,6 @@ public class Cliente extends Pessoa {
         System.out.println("Endereço: " + endereco);
         System.out.println("Hash da Senha: "+ "*".repeat(getSenha().length()));
     }
-
 }
     
     

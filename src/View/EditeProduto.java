@@ -42,6 +42,8 @@ public class EditeProduto extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(30, 30, 30));
+
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nome");
 
