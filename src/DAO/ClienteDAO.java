@@ -48,8 +48,14 @@ public class ClienteDAO extends ConnectionDAO {
                 String email = res.getString("email");
                 String telefone = res.getString("telefone");
 
+<<<<<<<< HEAD:src/DAO/ClienteDAO.java
                 //Cliente objeto = new Cliente(telefone, endereco, id, nome, email);
                 //MinhaLista.add(objeto);
+========
+                Aluno objeto = new Aluno(curso, fase, id, idade, nome, null);
+
+                MinhaLista.add(objeto);
+>>>>>>>> main:src/DAO/AlunoDAO.java
             }
 
             stmt.close();
